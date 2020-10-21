@@ -5,7 +5,10 @@ def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check that all adjacent items are in order, return early if so
+    for i, j in enumerate(items[1:]):
+        if j < items[i]:
+            return False
+    return True
 
 
 def bubble_sort(items):
