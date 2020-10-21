@@ -30,9 +30,16 @@ def selection_sort(items):
     unsorted item, and repeating until all items are in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Find minimum item in unsorted items
-    # TODO: Swap it with first unsorted item
+    while True:
+        for i, _ in enumerate(items[1:]):
+            min = i
+            if items[i + 1] < items[min]:
+                min = i + 1
+            if min != i:
+                items[i], items[min] = items[min], items[i]
+        if is_sorted(items):
+            break
+    return items
 
 
 def insertion_sort(items):
