@@ -47,6 +47,14 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
-    # TODO: Insert it in sorted order in front of items
+    while True:
+        for i, _ in enumerate(items[1:]):
+            j = i
+            k = items[i + 1]
+            while j >= 0 and k < items[j]:
+                items[j + 1] = items[j]
+                j -= 1
+            items[j + 1] = k
+        if is_sorted(items):
+            break
+    return items
