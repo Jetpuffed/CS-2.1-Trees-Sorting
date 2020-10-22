@@ -3,8 +3,8 @@
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    Time Complexity: O(n) - It iterates through the entire length of the array.
+    Space Complexity: O(n) - Memory usage grows in relation to the length of the array."""
     for i, j in enumerate(items[1:]):
         if j < items[i]:
             return False
