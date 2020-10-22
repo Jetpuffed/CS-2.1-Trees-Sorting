@@ -45,8 +45,8 @@ def selection_sort(items):
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    Time Complexity: O(n^2) - It iterates exponentially through the length of the array.
+    Space Complexity: O(1) - Memory usage does not grow because of in-place sorting."""
     while True:
         for i, _ in enumerate(items[1:]):
             j = i
