@@ -53,6 +53,13 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['B', 'A']) is False
         assert is_sorted(['A', 'B', 'A']) is False
         assert is_sorted(['C', 'B', 'A']) is False
+        assert is_sorted(['D', 'C', 'B', 'A']) is False
+        assert is_sorted(['A', 'B', 'c', 'C']) is False  # Lowercase string
+        assert is_sorted(['c', 'C', 'B', 'A']) is False
+        assert is_sorted(['?', 'A', '!', 'e', 'X']) is False  # Symbols in array
+        assert is_sorted(['A', 'B', 'C', 'D', '']) is False  # Empty string in array
+        assert is_sorted(['cAb', 'eeA', 'Att', 'sFx', 'zzz']) is False  # Mixed case strings
+        assert is_sorted(['x!', '?a?', 'c', 'e@@']) is False  # Mixture of lowercase and symbols
 
     def test_is_sorted_on_sorted_tuples(self):
         # Positive test cases (examples) with lists of sorted tuples
