@@ -38,9 +38,15 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['A', 'A']) is True  # Duplicate items are in order
         assert is_sorted(['A', 'B']) is True
         assert is_sorted(['A', 'B', 'C']) is True
-        # TODO: Write more positive test cases with assert is True statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        assert is_sorted(['A', 'B', 'C', 'D']) is True
+        assert is_sorted(['A', 'B', 'C', 'c']) is True  # Lowercase string
+        assert is_sorted(['A', 'B', 'C', 'D', 'F', 'e', 'x']) is True
+        assert is_sorted(['!', '?', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True  # Symbols in array
+        assert is_sorted(['!', '?', '@', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True
+        assert is_sorted(['', '!', '?', '@', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True  # Empty string in array
+        assert is_sorted(['AaA', 'AaB', 'AaC', 'AaD'])  # Mixed case strings
+        assert is_sorted(['A!', 'B?', 'C@'])  # Strings with symbols
+        assert is_sorted(['A ', 'B!', 'C?', 'D@'])  # String with a space
 
     def test_is_sorted_on_unsorted_strings(self):
         # Negative test cases (counterexamples) with lists of unsorted strings
