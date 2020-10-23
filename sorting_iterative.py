@@ -25,7 +25,7 @@ def bubble_sort(items, order="asc"):
     return items
 
 
-def selection_sort(items):
+def selection_sort(items, order="asc"):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
     Time Complexity: O(n^2) - It iterates exponentially through the length of the array.
@@ -33,11 +33,11 @@ def selection_sort(items):
     while True:
         for i, _ in enumerate(items[1:]):
             min = i
-            if items[i + 1] < items[min]:
+            if items[i + 1] < items[min] and order == "asc" or items[i + 1] > items[min] and order == "desc":
                 min = i + 1
             if min != i:
                 items[i], items[min] = items[min], items[i]
-        if is_sorted(items):
+        if is_sorted(items, order):
             break
     return items
 
