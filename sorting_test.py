@@ -26,9 +26,11 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted([5, 3]) is False
         assert is_sorted([3, 5, 3]) is False
         assert is_sorted([7, 5, 3]) is False
-        # TODO: Write more negative test cases with assert is False statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
+        assert is_sorted([10, 8, 7, 6, 5, 3]) is False
+        assert is_sorted([66, 41, 36, 33, 19, 13, 10, 8, 7, 6, 5, 3]) is False
+        assert is_sorted([66, 41, 36, 33, 19, 13, 10, 8, 7, 6, 5, 3, 0]) is False  # List ending with zero
+        assert is_sorted([66, 41, 36, 33, 19, 13, 10, 8, 7, 6, 5, 3, 0, -1]) is False  # Negative integer
+        assert is_sorted([66, 41, 36, 33, 19, 13, 10, 8, 7, 6, 5, 3, 0, -1, -3]) is False
 
     def test_is_sorted_on_sorted_strings(self):
         # Positive test cases (examples) with lists of sorted strings
