@@ -42,7 +42,7 @@ def selection_sort(items, order="asc"):
     return items
 
 
-def insertion_sort(items):
+def insertion_sort(items, order="asc"):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
     Time Complexity: O(n^2) - It iterates exponentially through the length of the array.
@@ -51,10 +51,10 @@ def insertion_sort(items):
         for i, _ in enumerate(items[1:]):
             j = i
             k = items[i + 1]
-            while j >= 0 and k < items[j]:
+            while (j >= 0 and k < items[j]) and order == "asc" or (j >= 0 and k > items[j]) and order == "desc":
                 items[j + 1] = items[j]
                 j -= 1
             items[j + 1] = k
-        if is_sorted(items):
+        if is_sorted(items, order):
             break
     return items
