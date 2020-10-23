@@ -51,7 +51,7 @@ def selection_sort(items, key=None, reverse=False):
     return items
 
 
-def insertion_sort(items, reverse=False):
+def insertion_sort(items, key=None, reverse=False):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
     Time Complexity: O(n^2) - It iterates exponentially through the length of the array.
@@ -60,10 +60,14 @@ def insertion_sort(items, reverse=False):
         for i, _ in enumerate(items[1:]):
             j = i
             k = items[i + 1]
+            if key is not None:
+                while (j >= 0 and key(k) < key(items[j])) and reverse is False or (j >= 0 and key(k) > key(items[j])) and reverse is True:
+                    items[j + 1] = items[j]
+                    j -= 1
             while (j >= 0 and k < items[j]) and reverse is False or (j >= 0 and k > items[j]) and reverse is True:
                 items[j + 1] = items[j]
                 j -= 1
             items[j + 1] = k
-        if is_sorted(items, reverse):
+        if is_sorted(items, key, reverse):
             break
     return items
