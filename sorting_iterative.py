@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 
 
-def is_sorted(items):
+def is_sorted(items, order="asc"):
     """Return a boolean indicating whether given items are in sorted order.
     Time Complexity: O(n) - It iterates through the entire length of the array.
     Space Complexity: O(n) - Memory usage grows in relation to the length of the array."""
+    if order == "desc":
+        for i, j in enumerate(items[1:]):
+            if j > items[i]:
+                return False
+        return True
     for i, j in enumerate(items[1:]):
         if j < items[i]:
             return False
