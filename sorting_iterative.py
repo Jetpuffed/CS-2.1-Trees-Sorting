@@ -26,7 +26,7 @@ def bubble_sort(items, key=None, reverse=False):
                     items[i + 1], items[i] = items[i], items[i + 1]
             if items[i + 1] < items[i] and reverse is False or items[i + 1] > items[i] and reverse is True:
                 items[i + 1], items[i] = items[i], items[i + 1]
-        if is_sorted(items, key=key, reverse=reverse):
+        if is_sorted(items, key, reverse):
             break
     return items
 
