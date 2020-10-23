@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 
 
+# Stretch Challenges:
+# [X] Extend sorting algorithms with an "order" parameter to specify ascending or descending order.
+# [X] Extend sorting algorithms with a "key" parameter to specify a function to call on each item when making comparisons.
+# [] Implement an insertion sort variation using binary search to find the position to insert each item. 
+# [] Implement improved iterative sorting algorithms: cocktail shaker sort, library sort, or shell sort.
+# [X] Annotate functions with complexity analysis of running time (operations) and space (memory usage).
+
 def is_sorted(items, key=None, reverse=False):
     """Return a boolean indicating whether given items are in sorted order.
     Time Complexity: O(n) - It iterates through the entire length of the array.
