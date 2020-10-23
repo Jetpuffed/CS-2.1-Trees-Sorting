@@ -11,16 +11,16 @@ def is_sorted(items, order="asc"):
     return True
 
 
-def bubble_sort(items):
+def bubble_sort(items, order="asc"):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
     Time Complexity: O(n^2) - It iterates exponentially through the length of the array.
     Space Complexity: O(1) - Memory usage does not grow because of in-place sorting."""
     while True:
         for i, _ in enumerate(items[1:]):
-            if items[i + 1] < items[i]:
+            if items[i + 1] < items[i] and order == "asc" or items[i + 1] > items[i] and order == "desc":
                 items[i + 1], items[i] = items[i], items[i + 1]
-        if is_sorted(items):
+        if is_sorted(items, order):
             break
     return items
 
