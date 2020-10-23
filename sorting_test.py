@@ -44,18 +44,15 @@ class IsSortedTest(unittest.TestCase):
         assert is_sorted(['!', '?', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True  # Symbols in array
         assert is_sorted(['!', '?', '@', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True
         assert is_sorted(['', '!', '?', '@', 'A', 'B', 'C', 'D', 'F', 'e', 'x']) is True  # Empty string in array
-        assert is_sorted(['AaA', 'AaB', 'AaC', 'AaD'])  # Mixed case strings
-        assert is_sorted(['A!', 'B?', 'C@'])  # Strings with symbols
-        assert is_sorted(['A ', 'B!', 'C?', 'D@'])  # String with a space
+        assert is_sorted(['AaA', 'AaB', 'AaC', 'AaD']) is True  # Mixed case strings
+        assert is_sorted(['A!', 'B?', 'C@']) is True  # Strings with symbols
+        assert is_sorted(['A ', 'B!', 'C?', 'D@']) is True  # String with a space
 
     def test_is_sorted_on_unsorted_strings(self):
         # Negative test cases (counterexamples) with lists of unsorted strings
         assert is_sorted(['B', 'A']) is False
         assert is_sorted(['A', 'B', 'A']) is False
         assert is_sorted(['C', 'B', 'A']) is False
-        # TODO: Write more negative test cases with assert is False statements
-        # You'll need a lot more than this to test sorting algorithm robustness
-        # ...
 
     def test_is_sorted_on_sorted_tuples(self):
         # Positive test cases (examples) with lists of sorted tuples
