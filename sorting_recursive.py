@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
 
+# Stretch Challenges:
+# [] Reduce the space complexity (memory usage) of merge sort by avoiding some list copying.
+# [] Implement bucket sort or sample sort for integers using divide-and-conquer recursion.
+
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
     and return a new list containing all items in sorted order.
