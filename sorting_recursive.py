@@ -5,7 +5,7 @@
 # [] Reduce the space complexity (memory usage) of merge sort by avoiding some list copying.
 # [] Implement bucket sort or sample sort for integers using divide-and-conquer recursion.
 
-def merge(items1, items2):
+def merge(items1, items2, result=[]):
     """Merge given lists of items, each assumed to already be in sorted order,
     and return a new list containing all items in sorted order.
     TODO: Running time: ??? Why and under what conditions?
@@ -13,6 +13,20 @@ def merge(items1, items2):
     # TODO: Repeat until one list is empty
     # TODO: Find minimum item in both lists and append it to new list
     # TODO: Append remaining items in non-empty list to new list
+    if not items1 and not items2:
+        return result
+    if not items1:
+        result.append(items2[0])
+        return merge(items1, items2[1:])
+    if not items2:
+        result.append(items1[0])
+        return merge(items1[1:], items2)
+    if items1[0] <= items2[0]:
+        result.append(items1[0])
+        return merge(items1[1:], items2)
+    if items1[0] >= items2[0]:
+        result.append(items2[0])
+        return merge(items1, items2[1:])
 
 
 def split_sort_merge(items):
