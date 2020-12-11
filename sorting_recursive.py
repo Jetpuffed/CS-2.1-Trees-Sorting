@@ -1,40 +1,26 @@
 #!/usr/bin/python3
 
 
-# Stretch Challenges:
-# [] Reduce the space complexity (memory usage) of merge sort by avoiding some list copying.
-# [] Implement bucket sort or sample sort for integers using divide-and-conquer recursion.
-
-def merge(items1, items2, result=[]):
+def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
     and return a new list containing all items in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    if not items1 and not items2:
-        return result
-    if not items1:
-        result.append(items2[0])
-        return merge(items1, items2[1:])
-    if not items2:
+    result = []
+    while items1 and items2:
+        if items1[0] <= items2[0]:
+            result.append(items1[0])
+            items1 = items1[1:]
+        else:
+            result.append(items2[0])
+            items2 = items2[1:]
+    while items1:
         result.append(items1[0])
-        return merge(items1[1:], items2)
-    if items1[0] <= items2[0]:
-        result.append(items1[0])
-        return merge(items1[1:], items2)
-    if items1[0] >= items2[0]:
+        items1 = items1[1:]
+    while items2:
         result.append(items2[0])
-        return merge(items1, items2[1:])
-
-
-def split_sort_merge(items):
-    """Sort given items by splitting list into two approximately equal halves,
-    sorting each with an iterative sorting algorithm, and merging results into
-    a list in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half using any other sorting algorithm
-    # TODO: Merge sorted halves into one list in sorted order
+        items2 = items2[1:]
+    return result
 
 
 def merge_sort(items):
@@ -42,10 +28,12 @@ def merge_sort(items):
     sorting each recursively, and merging results into a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half by recursively calling merge sort
-    # TODO: Merge sorted halves into one list in sorted order
+    if len(items) <= 1:
+        return items
+    mid = len(items) // 2
+    left = merge_sort(items[:mid])
+    right = merge_sort(items[mid:])
+    return merge(left, right)
 
 
 def partition(items, low, high):
@@ -55,11 +43,18 @@ def partition(items, low, high):
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Choose a pivot any way and document your method in docstring above
-    # TODO: Loop through all items in range [low...high]
-    # TODO: Move items less than pivot into front of range [low...p-1]
-    # TODO: Move items greater than pivot into back of range [p+1...high]
-    # TODO: Move pivot item into final position [p] and return index p
+    pivot = items[low]
+    i, j = low - 1, high + 1
+    while True:
+        i += 1
+        while items[i] < pivot:
+            i += 1
+        j -= 1
+        while items[j] > pivot:
+            j -= 1
+        if i >= j:
+            return j
+        items[i], items[j] = items[j], items[i]
 
 
 def quick_sort(items, low=None, high=None):
@@ -72,3 +67,11 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort
+    if low is None and high is None:
+        return items
+    if len(items) <= 1:
+        return items
+    if low < high:
+        p = partition(items, low, high)
+        quick_sort(items, low, p)
+        quick_sort(items, p + 1, high)
